@@ -1,0 +1,244 @@
+﻿@model MvcApplication.Models.SearchCriteria
+
+@{
+    ViewBag.Title = "Home Page";
+}
+@section featured {
+
+    <div class="wrapper">
+        <aside class="main-sidebar">
+            <section class="sidebar">
+                <ul class="sidebar-menu">
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-dashboard"></i> <span>八字桥厂</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="../../index.html"><i class="fa fa-circle-o"></i> 汇丰毛条 </a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </aside>
+
+        <div class="content-wrapper">
+
+            <section class="content">
+
+                <div class="row">
+                    <div class="col-xs-12">
+
+                        <div class="box">
+                            <div class="box-header">
+                                <h3 class="box-title"></h3>
+                            </div>
+                            <div class="box-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>企业名称：</label>
+                                            <label>常熟汇丰毛条有限公司</label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>联系人：</label>
+                                            <label>沈士明</label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>排口编号：</label>
+                                            <label>BZQ-01</label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>接入场：</label>
+                                            <label>常熟市八字桥污水处理厂</label>
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>企业地址：</label>
+                                            <label>江苏省常熟市塘镇何市</label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>联系电话：</label>
+                                            <label>0512-52541595</label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>监控项目：</label>
+                                            <label>COD，氨氮，排量</label>
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                                <!-- /.row -->
+                            </div>
+                        </div>
+                    </div>
+
+                    @using (@Html.BeginForm("SearchCriteriaInfo","Home",FormMethod.Post))
+                    {
+                        <div class="col-md-12">
+                            <div class="box-body">
+                                <div class="alert alert-dismissible alert-dismissible">
+                                    <div class="row">
+
+                                        <div class="col-md-1">
+                                            <div class="radio">
+                                                <label>
+
+                                                    @Html.RadioButton("ReportType", 1, new { name = "optionsRadios", id = "optionsRadios1", @class = "radio", @checked = "checked" })   日报
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-1">
+                                            <div class="radio">
+                                                <label>
+                                                    @Html.RadioButton("ReportType", 2, new { name = "optionsRadios", id = "optionsRadios1", @class = "radio" })   周报
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <div class="radio">
+                                                <label>
+                                                  
+                                                    @Html.RadioButton("ReportType", 3, new { name = "optionsRadios", id = "optionsRadios1", @class = "radio" })   月报
+                                                </label>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="col-md-3">
+                                            <div class="input-group date">
+                                                <label>
+                                                    日周月报-时间：
+                                                    @Html.TextBox("SelectedDate", "", new { @class="form-control pull-left", id="datepicker"})
+                                                    @*<input type="text" class="form-control pull-left" id="datepicker">*@
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-2">
+                                            <div class="input-group">
+                                                <button type="button" class="btn btn-block btn-google pull-right-container btn-lg" id="btnSearch">查询</button>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-3">
+                                            <div class="input-group">
+                                                <label>
+                                                    时间区域报表查询：
+                                                    @Html.TextBox("RangeDate", "", new { @class = "form-control pull-right", id = "reservation" })
+                                                    @*<input type="text" class="form-control pull-right" id="reservation">*@
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-1">
+                                            <div class="input-group">
+                                                <button type="button" class="btn btn-block btn-success pull-right-container btn-lg" id="btnSearch2">查询</button>
+                                            </div>
+                                        </div>
+
+
+
+
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    }
+
+
+                    <div class="col-xs-12">
+
+                        <div class="box">
+                            <div class="box-body">
+                                <table id="example1" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Rendering engine</th>
+                                            <th>Browser</th>
+                                            <th>Platform(s)</th>
+                                            <th>Engine version</th>
+                                            <th>CSS grade</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Trident</td>
+                                            <td>
+                                                Internet
+                                                Explorer 4.0
+                                            </td>
+                                            <td>Win 95+</td>
+                                            <td> 4</td>
+                                            <td>X</td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Rendering engine</th>
+                                            <th>Browser</th>
+                                            <th>Platform(s)</th>
+                                            <th>Engine version</th>
+                                            <th>CSS grade</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+}
+@section scripts{
+<script type="text/javascript">
+
+
+    console.log("11111");
+
+    $('#btnSearch').click(function () {
+
+        var requestData = {
+            ReportType: $('input[name=ReportType]:checked').val(),
+            SelectedDate: $('input[name=SelectedDate]').val()
+        };
+        $.ajax({
+            url: '@Url.Action("SearchCriteriaInfo", "Home")',
+            type: 'POST',
+            data: JSON.stringify(requestData),
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            success: function (response) {
+                alert(response);
+            },
+            error: function (response) {
+                alert(response);
+            }
+        });
+
+    });
+
+
+
+
+
+
+</script>
+
+
+
+}

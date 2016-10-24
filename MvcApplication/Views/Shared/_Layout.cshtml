@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - 我的 ASP.NET MVC 应用程序</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+
+    @Styles.Render("~/bootstrap/css/bootstrap.min.css")
+    @Styles.Render("~/bootstrap/css/bootstrap.min.css")
+    @Styles.Render("~/Content/ionicons.min.css")
+    @Styles.Render("~/plugins/datatables/dataTables.bootstrap.css")
+    @Styles.Render("~/dist/css/AdminLTE.min.css")
+    @Styles.Render("~/dist/css/skins/_all-skins.min.css")
+    @Styles.Render("~/plugins/daterangepicker/daterangepicker.css")
+    @Styles.Render("~/plugins/datepicker/datepicker3.css")
+
+
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    @RenderSection("featured", required: false)
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/plugins/jQuery/jquery-2.2.3.min.js")
+    @Scripts.Render("~/bootstrap/js/bootstrap.min.js")
+    @Scripts.Render("~/plugins/datatables/jquery.dataTables.min.js")
+    @Scripts.Render("~/plugins/datatables/dataTables.bootstrap.min.js")
+    @Scripts.Render("~/plugins/slimScroll/jquery.slimscroll.min.js")
+    @Scripts.Render("~/plugins/fastclick/fastclick.js")
+    @Scripts.Render("~/bootstrap/js/moment.min.js")
+    @Scripts.Render("~/plugins/daterangepicker/daterangepicker.js")
+    @Scripts.Render("~/plugins/datepicker/bootstrap-datepicker.js")
+    @Scripts.Render("~/dist/js/app.min.js")
+    @Scripts.Render("~/dist/js/demo.js")
+    <script>
+        $(function () {
+            $("#example1").DataTable();
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false
+            });
+
+
+            //Date range picker
+            $('#reservation').daterangepicker();
+            //Date range picker with time picker
+            $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A' });
+            //Date range as a button
+            $('#daterange-btn').daterangepicker(
+                {
+                    ranges: {
+                        'Today': [moment(), moment()],
+                        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                        'This Month': [moment().startOf('month'), moment().endOf('month')],
+                        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                    },
+                    startDate: moment().subtract(29, 'days'),
+                    endDate: moment()
+                },
+                function (start, end) {
+                    $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+                }
+            );
+
+            //Date picker
+            $('#datepicker').datepicker({
+                autoclose: true
+            });
+
+
+        });
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
